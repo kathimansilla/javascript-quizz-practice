@@ -1,6 +1,8 @@
 import { create } from 'zustand';
 import { type Question } from '../types';
 import confetti from 'canvas-confetti'
+import { persist } from 'zustand/middleware';
+//persist sincroniza los cambios con localstorage o lo que quiera
 
 interface State {
   questions: Question[];
@@ -11,7 +13,7 @@ interface State {
   goPrevQuestion: () => void;
 }
 
-export const useQuestionsStore = create<State>((set, get) => {
+export const useQuestionsStore = create<State>()(persist((set, get) => {
   return {
     questions: [],
     currentQuestion: 0,
@@ -58,5 +60,8 @@ export const useQuestionsStore = create<State>((set, get) => {
       }
     }
 
-  };
-});
+  }
+}, {
+  name: 'questions',
+  //por default lo guarda en localStorage 
+}));
