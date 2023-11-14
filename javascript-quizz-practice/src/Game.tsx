@@ -5,6 +5,7 @@ import { type Question as QuestionType } from './types';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { gradientDark } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 import { ArrowBackIosNew, ArrowForwardIos } from '@mui/icons-material';
+import { Footer } from './Footer';
 
 //Si pusiera esta función dentro, se renderizaría cada vez
 //También así es más fácil hacerle testing
@@ -71,6 +72,7 @@ export const Game = () => {
       </IconButton>
     </Stack>
       <Question info={questionInfo} />
+      <Footer />
     </>
   );
 };
